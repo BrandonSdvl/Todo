@@ -1,0 +1,11 @@
+.todo-list {
+    width: 90%;
+    margin: 20px 0 15px 0;
+
+    &__footer {
+        padding: 0.5rem;
+        margin: 5px;
+        display: flex;
+        justify-content: space-between;
+    }
+}

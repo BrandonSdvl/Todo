@@ -1,10 +1,20 @@
 import { ReactComponent as Cross } from '../../assets/icon-cross.svg'
-const TodoItem = () => {
+import './TodoItem.scss'
+
+const TodoItem = ({ itemData, deleteItem, updateItem }) => {
+
+    const handleChange = (e) => {
+        itemData.completed = itemData.completed ? false : true
+        updateItem(itemData)
+    }
+
     return (
-        <div>
-            <input type="checkbox" id="item1" />
-            <label htmlFor="item1">Read for 1 hour</label>
-            <button><Cross /></button>
+        <div className={"todo-item"}>
+            <label className={"todo-item__label"}>
+                <input type="checkbox" checked={itemData.completed} onChange={handleChange} name="completed" />
+                <span className={"todo-item__text"}>{itemData.task}</span>
+            </label>
+            <button onClick={() => deleteItem(itemData.id)}><Cross /></button>
         </div>
     )
 }
