@@ -39,12 +39,13 @@ const initialData = [
 
 function App() {
   const [data, setData] = useState(initialData)
+  const [view, setView] = useState('all')
 
   return (
     <div className="app">
       <Header data={data} setData={setData} />
-      <TodoList data={data} setData={setData} />
-      <Footer />
+      <TodoList data={data} setData={setData} view={view} />
+      <Footer data={data} setView={setView} />
     </div>
   );
 }

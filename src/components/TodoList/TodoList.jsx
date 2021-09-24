@@ -1,7 +1,9 @@
+import { useEffect, useState } from "react"
 import TodoItem from "../TodoItem/TodoItem"
 import './TodoList.scss'
 
-const TodoList = ({ data, setData }) => {
+const TodoList = ({ data, setData, view }) => {
+    const [dataCopy, setDataCopy] = useState(data)
 
     const deleteItem = (id) => {
         let newData = data.filter(el => el.id !== id)
@@ -13,16 +15,34 @@ const TodoList = ({ data, setData }) => {
         setData(newData)
     }
 
+    const clearCompleted = () => {
+        let newData = data.filter(el => el.completed === false)
+        setData(newData)
+    }
+
+    useEffect(() => {
+        if (view === 'all') {
+            setDataCopy(data)
+        } else if (view === 'active') {
+            setDataCopy(data.filter(el => el.completed === false))
+        } else if (view === 'completed') {
+            setDataCopy(data.filter(el => el.completed === true))
+        }
+    }, [view, data])
+
     return (
         <main className={"todo-list"}>
-            {data.length > 0 ?
-                data.map(el => < TodoItem itemData={el} key={el.id} deleteItem={deleteItem} updateItem={updateItem} />)
+            {dataCopy.length > 0 ?
+                dataCopy.map(el => {
+                    return < TodoItem itemData={el} key={el.id} deleteItem={deleteItem} updateItem={updateItem} />
+                })
                 :
-                <p>All Clean :))</p>
+                <p>All Clean</p>
             }
+
             <div className={"todo-list__footer"}>
                 <span>{data.length} items left</span>
-                <button>Clear Completed</button>
+                <button onClick={clearCompleted}>Clear Completed</button>
             </div>
         </main>
     )
