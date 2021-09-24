@@ -40,10 +40,12 @@ const initialData = [
 function App() {
   const [data, setData] = useState(initialData)
   const [view, setView] = useState('all')
+  const [theme, setTheme] = useState('dark')
+
 
   return (
     <div className="app">
-      <Header data={data} setData={setData} />
+      <Header data={data} setData={setData} theme={theme} setTheme={setTheme} />
       <TodoList data={data} setData={setData} view={view} />
       <Footer data={data} setView={setView} />
     </div>

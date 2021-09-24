@@ -12,13 +12,35 @@
     --main-font-color-hover: hsl(236, 33%, 92%);
     --second-font-color: hsl(234, 11%, 52%);
     --line-color: hsl(233, 14%, 35%);
-    --third-fond-color: hsl(237, 14%, 26%);
+    --third-font-color: hsl(237, 14%, 26%);
+
+    // img
+    --img-mobile-dark: url('./assets/bg-mobile-dark.jpg');
+
+    // font
+    --main-font: 'Josefin Sans', sans-serif;
+
+    // emphasis
+    --bright-blue: hsl(220, 98%, 61%);
+    --check-background: linear-gradient(135deg, rgba(87, 221, 240, 1) 0%, rgba(192, 88, 243, 1) 100%)
 }
 
 body {
     min-height: 100vh;
     min-width: 100vw;
     margin: 0;
+    font-family: var(--main-font);
+    background-color: var(--main-background);
+
+    &::before {
+        display: block;
+        content: '';
+        width: 100%;
+        background-image: var(--img-mobile-dark);
+        height: 200px;
+        position: absolute;
+        z-index: 1;
+    }
 }
 
 .app {
@@ -26,4 +48,55 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+.checkbox {
+    visibility: hidden;
+    width: 22px;
+    height: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+
+    &::before {
+        display: block;
+        visibility: visible;
+        content: "";
+        width: 21px;
+        height: 21px;
+        background-color: var(--third-font-color);
+        border-radius: 50%;
+    }
+
+    &::after {
+        display: block;
+        position: absolute;
+        visibility: visible;
+        content: "";
+        width: 19px;
+        height: 19px;
+        border-radius: 50%;
+        background-color: var(--second-background);
+    }
+
+    &:hover {
+        &::before {
+            background: var(--check-background);
+        }
+    }
+
+    &:checked {
+
+        &::before,
+        &::after {
+            background: var(--check-background);
+        }
+
+        &::after {
+            background-image: url('./assets/icon-check.svg');
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+    }
 }
