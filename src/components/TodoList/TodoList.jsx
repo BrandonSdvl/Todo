@@ -37,12 +37,12 @@ const TodoList = ({ data, setData, view }) => {
                     return < TodoItem itemData={el} key={el.id} deleteItem={deleteItem} updateItem={updateItem} />
                 })
                 :
-                <p>All Clean</p>
+                <p className={"todo-list__message"}>No Data...</p>
             }
 
             <div className={"todo-list__footer"}>
                 <span>{data.length} items left</span>
-                <button onClick={clearCompleted}>Clear Completed</button>
+                <button className={"todo-list__clear"} onClick={clearCompleted}>Clear Completed</button>
             </div>
         </main>
     )

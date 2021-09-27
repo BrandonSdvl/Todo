@@ -1,12 +1,35 @@
 .todo-list {
-    width: 90%;
+    width: 85%;
     margin: 20px 0 15px 0;
     z-index: 10;
+    background-color: var(--second-background);
+    border-radius: 5px;
+    font-size: 11px;
 
     &__footer {
-        padding: 0.5rem;
-        margin: 5px;
         display: flex;
         justify-content: space-between;
+        color: var(--second-font-color);
+        padding: 20px 15px;
+    }
+
+    &__clear {
+        font-size: 11px;
+        color: var(--second-font-color);
+        background-color: transparent;
+        border: none;
+        font-family: var(--main-font);
+        cursor: pointer;
+
+        &:hover {
+            color: var(--main-font-color);
+        }
+    }
+
+    &__message {
+        margin: 0;
+        padding: 20px;
+        color: var(--main-font-color);
+        border-bottom: solid 1px var(--line-color);
     }
 }

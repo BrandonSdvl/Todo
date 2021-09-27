@@ -11,11 +11,11 @@ const TodoItem = ({ itemData, deleteItem, updateItem }) => {
     return (
         <div className={"todo-item"}>
             <label className={"todo-item__label"}>
-                <input type="checkbox" checked={itemData.completed} onChange={handleChange} name="completed" />
+                <input className={"checkbox"} type="checkbox" checked={itemData.completed} onChange={handleChange} name="completed" />
                 <span className={"todo-item__text"}>{itemData.task}</span>
             </label>
-            <button onClick={() => deleteItem(itemData.id)}><Cross /></button>
-        </div>
+            <button className={"todo-item__delete"} onClick={() => deleteItem(itemData.id)}><Cross /></button>
+        </div >
     )
 }
 

@@ -10,9 +10,9 @@
     --second-background: hsl(235, 24%, 19%);
     --main-font-color: hsl(234, 39%, 85%);
     --main-font-color-hover: hsl(236, 33%, 92%);
-    --second-font-color: hsl(234, 11%, 52%);
-    --line-color: hsl(233, 14%, 35%);
-    --third-font-color: hsl(237, 14%, 26%);
+    --second-font-color: #777a92;
+    --line-color: #4d5066;
+    --third-font-color: #393a4c;
 
     // img
     --img-mobile-dark: url('./assets/bg-mobile-dark.jpg');
@@ -58,6 +58,8 @@ body {
     align-items: center;
     justify-content: center;
     position: relative;
+    margin: 0;
+    cursor: pointer;
 
     &::before {
         display: block;
@@ -78,12 +80,6 @@ body {
         height: 19px;
         border-radius: 50%;
         background-color: var(--second-background);
-    }
-
-    &:hover {
-        &::before {
-            background: var(--check-background);
-        }
     }
 
     &:checked {
