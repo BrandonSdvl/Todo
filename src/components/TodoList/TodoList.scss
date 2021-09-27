@@ -11,10 +11,12 @@
         justify-content: space-between;
         color: var(--second-font-color);
         padding: 20px 15px;
+        font-weight: 700;
     }
 
     &__clear {
         font-size: 11px;
+        font-weight: 700;
         color: var(--second-font-color);
         background-color: transparent;
         border: none;

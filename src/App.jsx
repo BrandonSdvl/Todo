@@ -47,7 +47,7 @@ function App() {
     <div className="app">
       <Header data={data} setData={setData} theme={theme} setTheme={setTheme} />
       <TodoList data={data} setData={setData} view={view} />
-      <Footer data={data} setView={setView} />
+      <Footer setView={setView} view={view} />
     </div>
   );
 }
