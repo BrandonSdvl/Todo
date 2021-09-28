@@ -4,6 +4,15 @@ import { ReactComponent as IconMoon } from '../../assets/icon-moon.svg'
 import { useRef } from 'react'
 
 const Header = ({ data, setData, theme, setTheme }) => {
+
+    const changeTheme = () => {
+        if (theme === 'dark') {
+            setTheme('light')
+        } else if (theme === 'light') {
+            setTheme('dark')
+        }
+    };
+
     const checkboxRef = useRef(null)
 
     const handlekeyDown = (e) => {
@@ -18,11 +27,14 @@ const Header = ({ data, setData, theme, setTheme }) => {
             setData([...data, newItem])
         }
     }
+
     return (
-        <header className="header">
+        <header className={`header ${theme === 'light' ? 'header--light' : 'header--dark'}`}>
             <div className={"header__top"}>
                 <h1 className="header__title">TODO</h1>
-                {theme === 'dark' ? <IconSun className={"header__icon"} /> : <IconMoon className={"header__icon"} />}
+                <span onClick={changeTheme}>
+                    {theme === 'dark' ? <IconSun className={"header__icon"} /> : <IconMoon className={"header__icon"} />}
+                </span>
             </div>
             <div className={"header__input-container"}>
                 <input className={"checkbox"} type="checkbox" ref={checkboxRef} />

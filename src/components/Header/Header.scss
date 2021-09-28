@@ -1,7 +1,31 @@
 .header {
     width: 85%;
-    z-index: 10;
     color: var(--main-font-color-hover);
+    z-index: 100;
+
+    &::before {
+        display: block;
+        content: '';
+        width: 100vw;
+        height: 200px;
+        top: 0;
+        left: 0;
+        position: absolute;
+        z-index: -10;
+        // background-repeat: no-repeat;
+    }
+
+    &--dark {
+        &::before {
+            background-image: url('../../assets/bg-mobile-dark.jpg');
+        }
+    }
+
+    &--light {
+        &::before {
+            background-image: url('../../assets/bg-mobile-light.jpg');
+        }
+    }
 
     &__title {
         margin-top: 50px;

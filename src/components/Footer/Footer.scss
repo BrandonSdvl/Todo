@@ -22,9 +22,18 @@
         font-weight: 700;
         outline: none;
 
+        &:hover {
+            color: var(--main-font-color);
+        }
+
         &--active {
             color: var(--bright-blue);
+
+            &:hover {
+                color: var(--bright-blue);
+            }
         }
+
     }
 
     &__message {

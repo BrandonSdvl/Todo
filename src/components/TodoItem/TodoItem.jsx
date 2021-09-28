@@ -9,7 +9,7 @@ const TodoItem = ({ itemData, deleteItem, updateItem }) => {
     }
 
     return (
-        <div className={"todo-item"}>
+        <div className={`todo-item ${itemData.completed ? 'todo-item--completed' : ''}`}>
             <label className={"todo-item__label"}>
                 <input className={"checkbox"} type="checkbox" checked={itemData.completed} onChange={handleChange} name="completed" />
                 <span className={"todo-item__text"}>{itemData.task}</span>

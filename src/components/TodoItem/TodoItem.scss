@@ -18,11 +18,12 @@
         align-items: center;
         padding: 10px 0;
         cursor: pointer;
+        color: var(--main-font-color);
     }
 
     &__text {
         margin-left: 10px;
-        color: var(--main-font-color);
+
         width: auto;
         font-weight: 400;
     }
@@ -36,6 +37,13 @@
 
         svg {
             transform: scale(0.7);
+        }
+    }
+
+    &--completed {
+        .todo-item__label {
+            color: var(--line-color);
+            text-decoration: line-through;
         }
     }
 }

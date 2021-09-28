@@ -1,0 +1,50 @@
+.app {
+    background-color: var(--main-background);
+}
+
+.checkbox {
+    visibility: hidden;
+    width: 22px;
+    height: 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    margin: 0;
+    cursor: pointer;
+
+    &::before {
+        display: block;
+        visibility: visible;
+        content: "";
+        width: 21px;
+        height: 21px;
+        background-color: var(--third-font-color);
+        border-radius: 50%;
+    }
+
+    &::after {
+        display: block;
+        position: absolute;
+        visibility: visible;
+        content: "";
+        width: 19px;
+        height: 19px;
+        border-radius: 50%;
+        background-color: var(--second-background);
+    }
+
+    &:checked {
+
+        &::before,
+        &::after {
+            background: var(--check-background);
+        }
+
+        &::after {
+            background-image: url('./assets/icon-check.svg');
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+    }
+}
