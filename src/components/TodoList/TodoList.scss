@@ -1,3 +1,5 @@
+@import '../../sass/breakpoints';
+
 .todo-list {
     width: 85%;
     margin: 20px 0 15px 0;
@@ -5,6 +7,17 @@
     background-color: var(--second-background);
     border-radius: 5px;
     font-size: 11px;
+    box-shadow: 0px 5px 30px 5px rgba(0, 0, 0, 0.25);
+
+    @include tablet {
+        width: 60%;
+        font-size: 13px;
+    }
+
+    @include laptop {
+        width: 40%;
+        font-size: 14px;
+    }
 
     &__footer {
         display: flex;
@@ -12,6 +25,10 @@
         color: var(--second-font-color);
         padding: 20px 15px;
         font-weight: 700;
+
+        @include laptop {
+            padding: 15px 15px;
+        }
     }
 
     &__clear {
@@ -22,6 +39,14 @@
         border: none;
         font-family: var(--main-font);
         cursor: pointer;
+
+        @include tablet {
+            font-size: 13px;
+        }
+
+        @include tablet {
+            font-size: 11px;
+        }
 
         &:hover {
             color: var(--main-font-color);

@@ -1,5 +1,16 @@
+@import '../../sass/breakpoints';
+
 .footer {
     width: 85%;
+    z-index: 150;
+
+    @include tablet {
+        width: 60%;
+    }
+
+    @include laptop {
+        width: 40%;
+    }
 
     &__buttons-container {
         width: 100%;
@@ -8,6 +19,13 @@
         padding: 15px;
         display: flex;
         justify-content: center;
+
+        @include laptop {
+            width: 180px;
+            margin-left: auto;
+            margin-right: auto;
+            transform: translateY(-60px);
+        }
     }
 
     &__button {
@@ -22,6 +40,11 @@
         font-weight: 700;
         outline: none;
 
+        @include laptop {
+            font-size: 12px;
+            margin: 0 2px;
+        }
+
         &:hover {
             color: var(--main-font-color);
         }
@@ -33,7 +56,6 @@
                 color: var(--bright-blue);
             }
         }
-
     }
 
     &__message {
@@ -42,6 +64,10 @@
         font-weight: 700;
         text-align: center;
         margin: 50px 0;
+
+        @include laptop {
+            margin: 0 0 40px 0;
+        }
     }
 }
 

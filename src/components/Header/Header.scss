@@ -1,7 +1,17 @@
+@import '../../sass/breakpoints';
+
 .header {
     width: 85%;
     color: var(--main-font-color-hover);
     z-index: 100;
+
+    @include tablet {
+        width: 60%;
+    }
+
+    @include laptop {
+        width: 40%;
+    }
 
     &::before {
         display: block;
@@ -12,18 +22,34 @@
         left: 0;
         position: absolute;
         z-index: -10;
-        // background-repeat: no-repeat;
     }
 
     &--dark {
         &::before {
             background-image: url('../../assets/bg-mobile-dark.jpg');
+
+            @include tablet {
+                background-image: url('../../assets/bg-desktop-dark.jpg');
+                height: 220px;
+            }
+
+            @include laptop {
+                height: 250px;
+            }
         }
     }
 
     &--light {
         &::before {
             background-image: url('../../assets/bg-mobile-light.jpg');
+
+            @include tablet {
+                background-image: url('../../assets/bg-desktop-light.jpg');
+            }
+
+            @include laptop {
+                height: 250px;
+            }
         }
     }
 
@@ -33,6 +59,16 @@
         letter-spacing: 10px;
         font-weight: 700;
         width: auto;
+
+        @include tablet {
+            margin-top: 60px;
+        }
+
+        @include laptop {
+            font-size: 35px;
+            letter-spacing: 12px;
+            margin-bottom: 30px;
+        }
     }
 
     &__top {
@@ -52,8 +88,12 @@
         border-radius: 5px;
         padding: 10px 15px;
         display: flex;
-        justify-content: space-between;
         align-items: center;
+        box-shadow: 0 15px 20px -5px rgba(0, 0, 0, 0.4);
+
+        @include tablet {
+            padding: 12px 15px;
+        }
     }
 
     &__input {
@@ -70,6 +110,11 @@
         color: var(--main-font-color);
         caret-color: var(--bright-blue);
         vertical-align: middle;
+
+        @include laptop {
+            font-size: 15px;
+            height: 27px;
+        }
 
         &::placeholder {
             color: var(--second-font-color);

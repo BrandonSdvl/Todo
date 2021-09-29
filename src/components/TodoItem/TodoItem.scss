@@ -1,3 +1,5 @@
+@import '../../sass/breakpoints';
+
 .todo-item {
     border-bottom: solid 1px var(--line-color);
     display: flex;
@@ -7,6 +9,12 @@
     &:hover {
         .checkbox::before {
             background: var(--check-background);
+        }
+
+        @include laptop {
+            .todo-item__delete svg {
+                visibility: visible;
+            }
         }
     }
 
@@ -19,13 +27,20 @@
         padding: 10px 0;
         cursor: pointer;
         color: var(--main-font-color);
+
+        @include laptop {
+            padding: 12px 0;
+        }
     }
 
     &__text {
         margin-left: 10px;
-
         width: auto;
         font-weight: 400;
+
+        @include laptop {
+            margin-left: 15px;
+        }
     }
 
     &__delete {
@@ -34,9 +49,16 @@
         padding: 0;
         border: none;
         background-color: transparent;
+        cursor: pointer;
+        margin: 5px;
 
         svg {
             transform: scale(0.7);
+
+            @include laptop {
+                transform: scale(1);
+                visibility: hidden;
+            }
         }
     }
 
