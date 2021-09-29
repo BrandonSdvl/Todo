@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './App.scss';
 import Footer from './components/Footer/Footer';
 import Header from './components/Header/Header';
@@ -58,9 +58,35 @@ const themes = {
 }
 
 function App() {
-  const [data, setData] = useState(initialData)
-  const [view, setView] = useState('all')
-  const [theme, setTheme] = useState('dark')
+  let localData = {}
+
+  if (localStorage.getItem('todo-data')) {
+    localData = JSON.parse(localStorage.getItem('todo-data'))
+  } else {
+    const userPrefersLight = window.matchMedia && window.matchMedia("(prefers-color-scheme: light)").matches;
+    const initialTheme = userPrefersLight ? 'light' : 'dark'
+
+    localData = {
+      theme: initialTheme,
+      data: initialData,
+      view: 'all'
+    }
+
+    localStorage.setItem("todo-data", JSON.stringify(localData));
+  }
+
+  const [data, setData] = useState(localData.data)
+  const [view, setView] = useState(localData.view)
+  const [theme, setTheme] = useState(localData.theme)
+
+  useEffect(() => {
+    let newData = {
+      theme,
+      data,
+      view
+    }
+    localStorage.setItem("todo-data", JSON.stringify(newData));
+  }, [data, view, theme])
 
   return (
     <div className="app" style={{ ...themes[theme] }}>
@@ -68,6 +94,7 @@ function App() {
       <TodoList data={data} setData={setData} view={view} />
       <Footer setView={setView} view={view} />
     </div>
+
   );
 }
 
