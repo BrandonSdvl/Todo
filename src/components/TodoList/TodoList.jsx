@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import TodoItem from "../TodoItem/TodoItem"
 import './TodoList.scss'
+import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
 
 const TodoList = ({ data, setData, view }) => {
     const [dataCopy, setDataCopy] = useState(data)
@@ -20,6 +21,39 @@ const TodoList = ({ data, setData, view }) => {
         setData(newData)
     }
 
+    const moveItem = (res) => {
+        const { source, destination } = res
+        if (!destination) {
+            return
+        }
+        if (source.index === destination.index && source.droppableId === destination.droppableId) {
+            return
+        }
+
+        if (view !== 'all') {
+            let itemIndex = data.indexOf(dataCopy[res.source.index])
+            let destinationIndex = data.indexOf(dataCopy[destination.index])
+
+            let newData = reorder(data, itemIndex, destinationIndex)
+            let newDataCopy = reorder(dataCopy, source.index, destination.index)
+
+            setDataCopy(newDataCopy)
+            setData(newData)
+
+        } else {
+            let newData = reorder(data, source.index, destination.index)
+            setData(newData)
+            setDataCopy(newData)
+        }
+    }
+
+    const reorder = (list, startIndex, endIndex) => {
+        const result = [...list]
+        const [removed] = result.splice(startIndex, 1)
+        result.splice(endIndex, 0, removed)
+        return result
+    }
+
     useEffect(() => {
         if (view === 'all') {
             setDataCopy(data)
@@ -31,20 +65,33 @@ const TodoList = ({ data, setData, view }) => {
     }, [view, data])
 
     return (
-        <main className={"todo-list"}>
-            {dataCopy.length > 0 ?
-                dataCopy.map(el => {
-                    return < TodoItem itemData={el} key={el.id} deleteItem={deleteItem} updateItem={updateItem} />
-                })
-                :
-                <p className={"todo-list__message"}>No Data...</p>
-            }
+        <DragDropContext onDragEnd={(res) => moveItem(res)} >
+            <main className={"todo-list"}>
+                <Droppable droppableId="todo">
+                    {(droppableProvided) => (
+                        <ul {...droppableProvided.droppableProps} ref={droppableProvided.innerRef} className={"todo-list__container"}>
+                            {dataCopy.length > 0 ?
+                                dataCopy.map((el, index) => {
+                                    return (
+                                        <Draggable key={el.id} draggableId={el.id} index={index}>
+                                            {(draggableProvided) => < TodoItem draggableProvided={draggableProvided} itemData={el} deleteItem={deleteItem} updateItem={updateItem} />}
+                                        </Draggable>
+                                    )
+                                })
+                                :
+                                <p className={"todo-list__message"}>No Data...</p>
+                            }
+                            {droppableProvided.placeholder}
+                        </ul>
+                    )}
+                </Droppable>
 
-            <div className={"todo-list__footer"}>
-                <span>{data.length} items left</span>
-                <button className={"todo-list__clear"} onClick={clearCompleted}>Clear Completed</button>
-            </div>
-        </main>
+                <div className={"todo-list__footer"}>
+                    <span>{data.length} items left</span>
+                    <button className={"todo-list__clear"} onClick={clearCompleted}>Clear Completed</button>
+                </div>
+            </main>
+        </DragDropContext >
     )
 }
 

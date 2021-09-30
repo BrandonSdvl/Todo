@@ -59,4 +59,10 @@
         color: var(--main-font-color);
         border-bottom: solid 1px var(--line-color);
     }
+
+    &__container {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
 }

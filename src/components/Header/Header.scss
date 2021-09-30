@@ -45,6 +45,7 @@
 
             @include tablet {
                 background-image: url('../../assets/bg-desktop-light.jpg');
+                height: 220px;
             }
 
             @include laptop {

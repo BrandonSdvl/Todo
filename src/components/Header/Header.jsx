@@ -18,7 +18,7 @@ const Header = ({ data, setData, theme, setTheme }) => {
     const handlekeyDown = (e) => {
         if (e.key === "Enter") {
             let newItem = {
-                id: Date.now(),
+                id: Date.now().toString(),
                 task: e.target.value,
                 completed: checkboxRef.current.checked,
             }
