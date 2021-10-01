@@ -29,7 +29,7 @@ const Header = ({ data, setData, theme, setTheme }) => {
     }
 
     return (
-        <header className={`header ${theme === 'light' ? 'header--light' : 'header--dark'}`}>
+        <header className={`header header--${theme}`}>
             <div className={"header__top"}>
                 <h1 className="header__title">TODO</h1>
                 <span onClick={changeTheme}>

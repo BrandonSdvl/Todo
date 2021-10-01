@@ -8,13 +8,10 @@
     background-color: var(--second-background);
 
     &:hover {
-        .checkbox::before {
-            background: var(--check-background);
-        }
-
         @include laptop {
             .todo-item__delete svg {
-                visibility: visible;
+                transition: opacity 0.2s linear;
+                opacity: 1;
             }
         }
     }
@@ -57,14 +54,15 @@
             transform: scale(0.7);
 
             @include laptop {
-                transform: scale(1);
-                visibility: hidden;
+                transform: scale(0.9);
+                opacity: 0;
             }
         }
     }
 
     &--completed {
         .todo-item__label {
+            transition: color 0.5s ease;
             color: var(--line-color);
             text-decoration: line-through;
         }

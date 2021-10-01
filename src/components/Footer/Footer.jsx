@@ -10,10 +10,10 @@ const Footer = ({ setView, view }) => {
                 <button className={`footer__button ${view === 'completed' ? 'footer__button--active' : ''} `} onClick={() => setView('completed')}>Completed</button>
             </div>
             <p className={"footer__message"}>Drag and drop to reorder list</p>
-            {/* <div class="attribution">
+            <div className="attribution">
                 Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank" rel="noreferrer">Frontend Mentor</a>.
-                Coded by <a href="#">Your Name Here</a>.
-            </div> */}
+                Coded by <a href="https://github.com/BrandonSdvl" target="_blank" rel="noreferrer">BrandonSdvl</a>.
+            </div>
         </footer>
     )
 }

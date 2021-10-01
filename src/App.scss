@@ -39,6 +39,12 @@
         background-color: var(--second-background);
     }
 
+    &:hover {
+        &::before {
+            background: var(--check-background);
+        }
+    }
+
     &:checked {
 
         &::before,
