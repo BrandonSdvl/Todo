@@ -17,6 +17,10 @@ const Header = ({ data, setData, theme, setTheme }) => {
 
     const handlekeyDown = (e) => {
         if (e.key === "Enter") {
+            if (!e.target.value) {
+                alert("Insert a to-do...")
+                return
+            }
             let newItem = {
                 id: Date.now().toString(),
                 task: e.target.value,

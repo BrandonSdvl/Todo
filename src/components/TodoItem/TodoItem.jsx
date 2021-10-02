@@ -14,7 +14,7 @@ const TodoItem = ({ itemData, deleteItem, updateItem, draggableProvided }) => {
                 <input className={"checkbox"} type="checkbox" checked={itemData.completed} onChange={handleChange} name="completed" />
                 <span className={"todo-item__text"}>{itemData.task}</span>
             </label>
-            <button className={"todo-item__delete"} onClick={() => deleteItem(itemData.id)}><Cross /></button>
+            <button className={"todo-item__delete"} onClick={() => deleteItem(itemData.id)} title="Delete"><Cross />X</button>
         </li >
     )
 }
