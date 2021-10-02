@@ -9,7 +9,7 @@ const TodoItem = ({ itemData, deleteItem, updateItem, draggableProvided }) => {
     }
 
     return (
-        <li className={`todo-item ${itemData.completed ? 'todo-item--completed' : ''}`} {...draggableProvided.draggableProps} ref={draggableProvided.innerRef} {...draggableProvided.dragHandleProps}>
+        <li className={`todo-item ${itemData.completed ? 'todo-item--completed' : ''}`} {...draggableProvided.draggableProps} ref={draggableProvided.innerRef} {...draggableProvided.dragHandleProps} role="option" aria-selected={itemData.completed}>
             <label className={"todo-item__label"}>
                 <input className={"checkbox"} type="checkbox" checked={itemData.completed} onChange={handleChange} name="completed" />
                 <span className={"todo-item__text"}>{itemData.task}</span>

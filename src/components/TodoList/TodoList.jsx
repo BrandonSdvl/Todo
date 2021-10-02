@@ -69,7 +69,7 @@ const TodoList = ({ data, setData, view }) => {
             <main className={"todo-list"}>
                 <Droppable droppableId="todo">
                     {(droppableProvided) => (
-                        <ul {...droppableProvided.droppableProps} ref={droppableProvided.innerRef} className={"todo-list__container"}>
+                        <ul {...droppableProvided.droppableProps} ref={droppableProvided.innerRef} className={"todo-list__container"} role="listbox">
                             {dataCopy.length > 0 ?
                                 dataCopy.map((el, index) => {
                                     return (
