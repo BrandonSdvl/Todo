@@ -6,7 +6,9 @@ import { TYPES } from "../../actions/todoActions";
 
 const Header = ({ dispatch, theme, setTheme }) => {
   const handleChangeTheme = () => {
-    setTheme(theme === "dark" ? "light" : "dark");
+    const newTheme = theme === "dark" ? "light" : "dark";
+    setTheme(newTheme);
+    localStorage.setItem("theme", newTheme);
   };
 
   const checkboxRef = useRef(null);

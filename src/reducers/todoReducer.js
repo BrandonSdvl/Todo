@@ -34,16 +34,7 @@ export const initialState = [
 ];
 
 export const todoInit = () => {
-  let localData = {};
-  const storedData = localStorage.getItem("data");
-
-  if (storedData) {
-    localData = JSON.parse(storedData);
-  } else {
-    localData = initialState;
-    localStorage.setItem("data", JSON.stringify(localData));
-  }
-  return localData;
+  return JSON.parse(localStorage.getItem("data")) || initialState;
 };
 
 export const todoReducer = (state, action) => {

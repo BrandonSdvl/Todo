@@ -4,6 +4,11 @@ import "./Footer.scss";
 const buttonsLabels = ["All", "Active", "Completed"];
 
 const Footer = ({ setView, view }) => {
+  const handleChangeView = (newView) => {
+    setView(newView);
+    localStorage.setItem("view", newView);
+  };
+
   return (
     <footer className={"footer"}>
       <div className={"footer__buttons-container"}>
@@ -12,7 +17,7 @@ const Footer = ({ setView, view }) => {
             key={label}
             label={label}
             active={view === label.toLowerCase()}
-            onClick={() => setView(label.toLowerCase())}
+            onClick={() => handleChangeView(label.toLowerCase())}
           />
         ))}
       </div>
